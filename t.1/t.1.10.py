@@ -3,8 +3,14 @@ def main():
     book = {}
 
     while True:
+ 
+        command = None
+        while command == None:
+            try:
+                command = int(input("1 = search, 2 = add, 3 = quit: "))
 
-        command = int(input("1 = search, 2 = add, 3 = quit: "))
+            except:
+                pass
 
         if command == 1: #search
             name = input("Give a name: ")
