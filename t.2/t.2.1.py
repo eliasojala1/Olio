@@ -17,6 +17,11 @@ print(jono)
 jono.append("Marjo")
 print(jono)
 
+print(jono)
 Antti = jono.index("Antti")
-jono.append(jono[Antti])
+poistettu = jono.pop(Antti)
+uusi_index = Antti + 2
+
+jono.insert(uusi_index, poistettu)
+
 print(jono)
