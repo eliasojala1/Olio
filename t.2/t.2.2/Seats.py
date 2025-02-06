@@ -1,39 +1,37 @@
 class Traincarriage:
-    def __init__(self, id, seats, speed):
-        self.id = id
+    def __init__(self, identifier, seats, speed):
+        self.identifier = identifier
         self.seats = seats
-        self.reserved_seats = set()
         self.speed = speed
-    
-    def Freeseats(self):
+        self.reserved_seats = set() 
+
+    def freeseats(self):
         return self.seats - len(self.reserved_seats)
-    
-    def bookedseats(self, seatid):
 
-        if 1 <= seatid <= self.seats and seatid not in self.reserved_seats:
-                self.reserved_seats.add(seatid)
-                print(f"Seat {seatid} on train {self.id} has been booked")
-        
+    def book_seat(self, seat_number):
+        if seat_number < 1 or seat_number > self.seats:
+            print("Error: Invalid seat number!")
+        elif seat_number in self.reserved_seats:
+            print("Error: Seat already booked!")
         else:
-             print("This seat is already taken!")
+            self.reserved_seats.add(seat_number)
+            print(f"Seat {seat_number} on train {self.identifier} booked successfully!")
 
-    def cancel(self, seatid):
-        if seatid in self.reserved_seats:
-              self.reserved_seats.remove(seatid)
-              print(f"reservation for seat {seatid} has been removed")
+    def cancel_reservation(self, seat_number):
+        if seat_number in self.reserved_seats:
+            self.reserved_seats.remove(seat_number)
+            print(f"Reservation for seat {seat_number} cancelled.")
         else:
-             print("Error, this seat is not reserved.")
+            print("Error: Seat is not reserved!")
 
-    def reset(self):
-         self.reserved_seats.clear()
-         print("All reservations has been cleared!")
+    def reset_reservations(self):
+        self.reserved_seats.clear()
+        print("All reservations have been reset!")
 
-    def status(self):
-         
-        
-    def bookedseats(self):
-        if self.Freeseats() > 0:
-            self.reserved_seats += 1
+    def reservation_status(self):
+        booked = sorted(self.reserved_seats)
+        free = [seat for seat in range(1, self.seats + 1) if seat not in self.reserved_seats]
+        return f"{self.identifier} - Speed: {self.speed}\nReserved: {booked}\nFree: {free}"
 
-        else:
-            print("Sorry, there is not any seats left!")
+    def is_full(self):
+        return len(self.reserved_seats) == self.seats
