@@ -1,7 +1,5 @@
 
 jono = ["Matti", "Riikka", "Antti", "Jenni", "Anu", "Ville", "Jarno"]
-t = 0
-
 print(jono)
 
 jono.remove(jono[0])

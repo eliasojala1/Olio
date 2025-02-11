@@ -10,9 +10,9 @@ class Traincarriage:
 
     def book_seat(self, seat_number):
         if seat_number < 1 or seat_number > self.seats:
-            print("Error: Invalid seat number!")
+            print("Error")
         elif seat_number in self.reserved_seats:
-            print("Error: Seat already booked!")
+            print("Error")
         else:
             self.reserved_seats.add(seat_number)
             print(f"Seat {seat_number} on train {self.identifier} booked successfully!")
@@ -22,11 +22,11 @@ class Traincarriage:
             self.reserved_seats.remove(seat_number)
             print(f"Reservation for seat {seat_number} cancelled.")
         else:
-            print("Error: Seat is not reserved!")
+            print("Error")
 
     def reset_reservations(self):
         self.reserved_seats.clear()
-        print("All reservations have been reset!")
+        print("reservations have been reset")
 
     def reservation_status(self):
         booked = sorted(self.reserved_seats)
