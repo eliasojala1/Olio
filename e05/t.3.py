@@ -67,5 +67,5 @@ cargo_hold = CargoHold(100)
 cargo_hold.add_suitcase(adas_suitcase)
 cargo_hold.add_suitcase(peters_suitcase)
 
-print("The suitcases in the cargo hold contain the following items:")
+print("The suitcases contains:")
 cargo_hold.print_items()
